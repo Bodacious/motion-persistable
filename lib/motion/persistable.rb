@@ -21,7 +21,7 @@ module Motion
         instance_eval do
               
           define_method method_name do
-            if App::Persistence[send("_#{method_name}_key")].nil? and default_value          
+            if App::Persistence[send("_#{method_name}_key")].nil? and default_value
               App::Persistence[send("_#{method_name}_key")] = default_value
             end          
             App::Persistence[send("_#{method_name}_key")]

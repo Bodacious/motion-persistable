@@ -33,6 +33,12 @@ Include the module Motion::Persistable in any class that you want persistable at
   
       include Motion::Persistable
   
+      # Define this in your model to use your own key, otherise it will try and call 
+      # name() on the instance by default
+      def persistence_key
+        "User"
+      end
+      
       # This will persist the user's email under the key: "User.bodacious.email" (where the
       # user's username was bodacious)
       attr_persisted :email, '', :username
@@ -52,6 +58,7 @@ Include the module Motion::Persistable in any class that you want persistable at
   
     end
   
+
 ## Considerations
 
 The obvious drawback with this current approach is that instances require unique keys.
