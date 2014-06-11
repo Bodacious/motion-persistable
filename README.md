@@ -12,20 +12,22 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundles
+    $ bundle
 
-Add this line to your application's Rakefile:
+
+Or install it yourself with:
+
+    $ gem install motion-persistable
+
+...add this line to your application's Rakefile:
     
     Bundler.require # this should already be there
     require 'motion-persistable'
 
-Or install it yourself as:
-
-    $ gem install motion-persistable
 
 ## Usage
 
-Include the module Motion::Persistable in any class that you want persistable attributes
+Include the module **Motion::Persistable** in any class that you want persistable attributes
 
 ### Persistable Instance Methods
 
