@@ -60,6 +60,9 @@ Include the module **Motion::Persistable** in any class that you want persistabl
   
     end
   
+## Gotchas
+
+* Dont' set class attributes called `name()` without providing a `key()`. The `name()` method defined on instances of `Class` is used as a default key prefix when no `key()` method has been defined. This is handy because it provides key names such as `"User.login_count"` but will cause an infinite loop if no `key()` is defined as an alternative.
 
 ## Considerations
 
