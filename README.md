@@ -29,27 +29,28 @@ Include the module Motion::Persistable in any class that you want persistable at
 
 ### Persistable Instance Methods
 
-class User
+    class User
   
-  include Motion::Persistable
-  extend Motion::Persistable # for class methods
+      include Motion::Persistable
   
-  # This will persist the user's email under the key: "User.bodacious.email" (where the
-  # user's username was bodacious)
-  attr_persisted :email, '', :username
+      # This will persist the user's email under the key: "User.bodacious.email" (where the
+      # user's username was bodacious)
+      attr_persisted :email, '', :username
 
-  # This will set an attribute called age, with a default value of 16.
-  # When a new value is set, the block is called, in this case it's recorded on TestFlight
-  attr_persisted :age, 16, :username do |value|
-    testflight_checkpoint("Set new age value", age: value)
-  end
+      # This will set an attribute called age, with a default value of 16.
+      # When a new value is set, the block is called, in this case it's recorded on TestFlight
+      attr_persisted :age, 16, :username do |value|
+        testflight_checkpoint("Set new age value", age: value)
+      end
   
-  class << self 
-    # This will set a class attribute User.count with a default value of 0
-    attr_persisted :count, 0
-  end
+      class << self 
+        include Motion::Persistable # for class methods
+
+        # This will set a class attribute User.count with a default value of 0
+        attr_persisted :count, 0
+      end
   
-end
+    end
   
 ## Considerations
 
